@@ -1,0 +1,23 @@
+{
+  "method": "Training-set sampling with replacement; memorization control, not a learned generative competitor",
+  "samples_per_replicate": 10000,
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "metrics": {
+    "validity": {
+      "mean_percent": 100.0,
+      "sample_std_percent": 0.0
+    },
+    "uniqueness": {
+      "mean_percent": 97.20666666666666,
+      "sample_std_percent": 0.14843629385475182
+    },
+    "novelty": {
+      "mean_percent": 0.0,
+      "sample_std_percent": 0.0
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "source_log": "PhenOnlyUnConditional/02_train_extrafeat/slurm-74442.out",
+  "source_sha256": "81c26ad2af065d5de9c50504d3023c40ee1b56462c8f81bb96c548b214ef7238",
+  "run_name": "uncond_v2_feat_e500",
+  "train_epochs": 500,
+  "validation_evaluations": 21,
+  "minimum_logged_validation_nll_epoch": 399,
+  "validation_epoch_0_is_initial_sanity_check": true,
+  "note": "Values are rounded as printed in the source log; training CE and validation NLL are different objectives."
+}

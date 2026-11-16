@@ -1,0 +1,26 @@
+{
+  "rdkit_version": "2025.09.6",
+  "seed": 42,
+  "fingerprint": "Morgan radius 2, 2048 bits, chirality enabled",
+  "training_reference_molecules": 175318,
+  "training_unique_nonempty_scaffolds": 39974,
+  "generated_valid_unique_molecules": 24978,
+  "generated_nonempty_scaffold_molecules": 24961,
+  "generated_unique_nonempty_scaffolds": 15029,
+  "generated_unique_scaffolds_absent_from_training": 13143,
+  "novel_unique_scaffold_fraction": 0.8745092820546942,
+  "generated_molecule_fraction_with_scaffold_absent_from_training": 0.5451304034293498,
+  "generated_empty_scaffolds": 17,
+  "Generated": {
+    "query_count": 1000,
+    "mean_nearest_tanimoto": 0.47229458728591295,
+    "median_nearest_tanimoto": 0.45161290322580644,
+    "fraction_at_least_0_8": 0.018
+  },
+  "Held-out validation": {
+    "query_count": 1000,
+    "mean_nearest_tanimoto": 0.7159575178933155,
+    "median_nearest_tanimoto": 0.7368421052631579,
+    "fraction_at_least_0_8": 0.312
+  }
+}

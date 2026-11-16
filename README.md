@@ -45,6 +45,27 @@ The recorded configuration uses 500 diffusion steps, a cosine noise schedule, ma
 
 The discrete training objective combines atom cross-entropy and bond cross-entropy, with bond weight 5 and global-target weight 0. Although the dataset identifier includes `bde`, this run is **unconditional**; it does not directly optimize antioxidant activity or a BDE target. Full settings are in [the recorded configuration](configs/recorded_training.yaml).
 
+## Training history and checkpoint selection
+
+![Training cross-entropy and validation negative log-likelihood](figures/training_history.png)
+*500 recorded training epochs and 21 validation evaluations, including the initial sanity check. Training CE and validation NLL have different definitions and are shown separately. Epoch 399 has the lowest logged validation NLL (290.80), matching the checkpoint monitor. See [history provenance](docs/training_history.md).*
+
+## Chemical diversity beyond exact novelty
+
+![Nearest-training similarity and generated scaffold diversity](figures/chemical_diversity.png)
+*Nearest-neighbor CDF: 1,000 seeded generated queries and 1,000 held-out validation queries, each compared against the entire training split using chiral radius-2, 2,048-bit Morgan fingerprints. Scaffold counts use all valid unique recorded generations and exclude empty scaffolds. The validation cohort is a molecular reference, not a competing generative model. See [definitions and complete results](docs/diversity.md).*
+
+The pooled valid generations contain **15,029 distinct nonempty Murcko scaffolds**, of which **13,143 (87.45%)** are absent from training. Because scaffold counts give each scaffold equal weight, this differs from the molecule-weighted fraction: 54.51% of generated molecules with a nonempty scaffold carry one absent from training. There are 17 acyclic molecules excluded from those denominators. Median nearest-training similarity is **0.452** for the 1,000 generated queries and **0.737** for the validation reference. Lower similarity supports structural exploration but does not establish useful antioxidant chemistry.
+
+## Memorization control
+
+| Method: 3 × 10,000 draws | Validity | Uniqueness | Novelty |
+|---|---:|---:|---:|
+| DiGress, fixed checkpoint | 83.40% | 99.95% | 99.33% |
+| Training-set resampling | 100.00% | 97.21% | 0.00% |
+
+Both rows use the same metric denominators. The resampling control draws existing training molecules with replacement, so validity and zero novelty follow from its construction. It is a memorization control, not another learned generative model. [Replicate records and methodology](docs/diversity.md) are included.
+
 ## Reproduce the figures
 
 From the repository root, use a compatible Python environment with RDKit, NumPy and Matplotlib:
@@ -52,6 +73,11 @@ From the repository root, use a compatible Python environment with RDKit, NumPy 
 ```bash
 pip install -r requirements-analysis.txt
 python scripts/reproduce.py
+python scripts/plot_training.py
+python scripts/plot_diversity.py  # redraw cached results without recomputing fingerprints
+# More costly full-reference diversity analysis:
+python scripts/analyze_diversity.py --queries 1000 --seed 42
+python scripts/evaluate_resampling_baseline.py
 ```
 
 This recomputes the three recorded benchmark replicates from sample records and the training-SMILES split, verifies them against the source summary, and exports figures as PNG, PDF and SVG. It requires no GPU or checkpoint. [Training and generation instructions](docs/reproducibility.md) explain the separate requirements and limits for those stages.

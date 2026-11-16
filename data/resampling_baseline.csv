@@ -1,0 +1,4 @@
+seed,raw_samples,validity_percent,uniqueness_percent,novelty_percent
+42,10000,100.0,97.37,0.0
+43,10000,100.0,97.08,0.0
+44,10000,100.0,97.17,0.0

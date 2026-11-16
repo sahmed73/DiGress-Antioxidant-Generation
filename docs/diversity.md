@@ -1,0 +1,13 @@
+# Diversity and nearest-neighbor evaluation
+
+Run `python scripts/analyze_diversity.py --queries 1000 --seed 42` from the root. This analysis parses the complete training population and all unique valid molecules from the 30,000 recorded generations. It is more costly than the cached figure replay; use a compute allocation for the full run.
+
+**Scaffolds:** RDKit Bemis–Murcko scaffold SMILES, preserving atom/bond types and ignoring scaffold chirality. Counts are computed on every valid unique generated molecule across the pooled sampling replicates. The reference is the entire training split (175,320 rows; 175,318 distinct recorded SMILES). Empty scaffolds (acyclic molecules) are recorded separately and excluded from scaffold novelty denominators. The fraction of novel unique scaffolds differs from the fraction of molecules carrying a novel scaffold; both are in `figures/diversity_metrics.json`. Neither quantity establishes synthetic accessibility or antioxidant performance.
+
+**Nearest neighbors:** binary Morgan fingerprints, radius 2, 2,048 bits, chirality enabled; Tanimoto similarity. A seeded sample of 1,000 unique generated molecules is compared against every training molecule. Another 1,000 unique held-out validation molecules provide a reference distribution using the same training population. Sampling uses sorted SMILES with Python's seeded RNG; exact query identities and nearest matches are in `figures/nearest_training_neighbors.csv`. The CDF compares distributions, not antioxidant scores. Run `python scripts/plot_diversity.py` to redraw the cached result without recomputing fingerprints. Fingerprint collisions and the selected representation affect distances; exact molecular novelty is defined separately.
+
+The held-out molecular reference is not a competing generative model. Query sampling does not provide a full-population estimate with a reported confidence interval. Similarity 1 can occur for nonidentical molecules under a finite fingerprint, and high exact-SMILES novelty can coexist with high training similarity.
+
+## Memorization control
+
+`python scripts/evaluate_resampling_baseline.py` draws 10,000 training molecules with replacement for each of seeds 42, 43 and 44. The same denominators are used as the DiGress benchmark. RDKit sanitization and largest-fragment canonicalization are applied to the draws. Novelty is zero by construction because every draw originates in training. This is a useful memorization control, not evidence that DiGress outperforms another learned generative architecture. Sampling validity differences also reflect that the control selects existing molecules rather than constructing graphs.

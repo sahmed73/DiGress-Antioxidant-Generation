@@ -16,4 +16,4 @@ The training launcher installs the custom dataset adapter and patches the bundle
 
 The historical generation configuration refers to `02_training_and_generation/data/model/digress_epoch399.ckpt`, which is not distributed here. A trained compatible checkpoint and the graph training split are required to run the generation code. Configure their paths in `generation/config.py` and consult the launcher's command-line help. No download URL is invented; the checkpoint can be added to a separately approved release later. The 30,000 recorded sample benchmark remains reproducible from the packaged records without those assets.
 
-Fresh training/sampling and bitwise agreement with the historical campaign have not been demonstrated. Loss curves are omitted because a verified training history was not located in the selected source package.
+Fresh training/sampling and bitwise agreement with the historical campaign have not been demonstrated. The [verified training history](training_history.md) is now included; `python scripts/plot_training.py` reproduces it. [Diversity and memorization-control analyses](diversity.md) use the released data with their own commands.
