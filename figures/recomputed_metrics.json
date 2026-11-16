@@ -1,0 +1,14 @@
+{
+  "validity": {
+    "mean_percent": 83.39999999999999,
+    "sample_std_percent": 0.505667875190824
+  },
+  "uniqueness": {
+    "mean_percent": 99.94807755260608,
+    "sample_std_percent": 0.059130318256569246
+  },
+  "novelty": {
+    "mean_percent": 99.33251139306857,
+    "sample_std_percent": 0.08438573499615633
+  }
+}

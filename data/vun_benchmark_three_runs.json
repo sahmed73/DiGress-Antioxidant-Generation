@@ -1,0 +1,92 @@
+{
+  "metrics": {
+    "novelty": {
+      "mean_percent": 99.33251139306859,
+      "replicate_percentages": [
+        99.36397455898236,
+        99.39664534813564,
+        99.23691427208776
+      ],
+      "sample_standard_deviation_percent": 0.08438573499615633,
+      "student_t_95_ci_percent": [
+        99.12288560643346,
+        99.54213717970372
+      ],
+      "student_t_95_margin_percent": 0.20962578663512377
+    },
+    "uniqueness": {
+      "mean_percent": 99.94807755260608,
+      "replicate_percentages": [
+        99.88013903871509,
+        99.98793436293437,
+        99.9761592561688
+      ],
+      "sample_standard_deviation_percent": 0.059130318256569246,
+      "student_t_95_ci_percent": [
+        99.80118969911895,
+        100.09496540609321
+      ],
+      "student_t_95_margin_percent": 0.1468878534871224
+    },
+    "validity": {
+      "mean_percent": 83.4,
+      "replicate_percentages": [
+        83.43,
+        82.88,
+        83.89
+      ],
+      "sample_standard_deviation_percent": 0.5056678751908241,
+      "student_t_95_ci_percent": [
+        82.14385136163338,
+        84.65614863836663
+      ],
+      "student_t_95_margin_percent": 1.2561486383666187
+    }
+  },
+  "protocol": {
+    "checkpoint_runs": 1,
+    "confidence_interval": "two-sided 95% Student t interval across sampling replicates; df=2",
+    "interpretation": "sampling variability for one fixed checkpoint; not training-run variability",
+    "samples_per_replicate": 10000,
+    "sampling_replicates": 3,
+    "total_samples": 30000
+  },
+  "replicates": [
+    {
+      "novel_unique_valid_samples": 8280,
+      "novelty_percent": 99.36397455898236,
+      "raw_samples": 10000,
+      "replicate": 1,
+      "sample_start": 0,
+      "sample_stop_exclusive": 10000,
+      "unique_valid_samples": 8333,
+      "uniqueness_percent": 99.88013903871509,
+      "valid_samples": 8343,
+      "validity_percent": 83.43
+    },
+    {
+      "novel_unique_valid_samples": 8237,
+      "novelty_percent": 99.39664534813564,
+      "raw_samples": 10000,
+      "replicate": 2,
+      "sample_start": 10000,
+      "sample_stop_exclusive": 20000,
+      "unique_valid_samples": 8287,
+      "uniqueness_percent": 99.98793436293437,
+      "valid_samples": 8288,
+      "validity_percent": 82.88
+    },
+    {
+      "novel_unique_valid_samples": 8323,
+      "novelty_percent": 99.23691427208776,
+      "raw_samples": 10000,
+      "replicate": 3,
+      "sample_start": 20000,
+      "sample_stop_exclusive": 30000,
+      "unique_valid_samples": 8387,
+      "uniqueness_percent": 99.9761592561688,
+      "valid_samples": 8389,
+      "validity_percent": 83.89
+    }
+  ]
+}

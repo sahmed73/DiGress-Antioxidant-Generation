@@ -1,0 +1,4 @@
+name: 'ao_phenolic_bde'
+datadir: 'data/ao_phenolic_bde/'
+remove_h: True
+pin_memory: False

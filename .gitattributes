@@ -1,0 +1,5 @@
+# Generated SVG path syntax and recorded CSV CRLF are preserved verbatim.
+*.svg -whitespace
+*.csv whitespace=cr-at-eol
+# Retain upstream configuration formatting.
+02_training_and_generation/code/DiGress/configs/** -whitespace

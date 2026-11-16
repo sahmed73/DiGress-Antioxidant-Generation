@@ -1,0 +1,5 @@
+name: 'ao_conditional'
+datadir: 'data/ao_conditional/'
+remove_h: True
+p_uncond: 0.15
+pin_memory: False

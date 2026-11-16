@@ -1,0 +1,4 @@
+name: 'guacamol'
+datadir: 'data/guacamol/guacamol_pyg/'
+remove_h: null
+filter: True
